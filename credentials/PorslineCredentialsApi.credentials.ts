@@ -5,22 +5,16 @@ import {
 	INodeProperties,
 } from 'n8n-workflow';
 
-export class HttpBinApi implements ICredentialType {
-	name = 'httpbinApi';
-	displayName = 'HttpBin API';
-	documentationUrl = '<your-docs-url>';
+export class PorslineCredentialsApi implements ICredentialType {
+	name = 'porslineCredentialsApi';
+	displayName = 'Porsline Credentials API';
+	documentationUrl = 'https://developers.porsline.ir/#section/Authentication';
 	properties: INodeProperties[] = [
 		{
-			displayName: 'Token',
-			name: 'token',
+			displayName: 'API Key',
+			name: 'apiKey',
 			type: 'string',
 			default: '',
-		},
-		{
-			displayName: 'Domain',
-			name: 'domain',
-			type: 'string',
-			default: 'https://httpbin.org',
 		},
 	];
 
@@ -28,20 +22,22 @@ export class HttpBinApi implements ICredentialType {
 	// stating how this credential is injected as part of the request
 	// An example is the Http Request node that can make generic calls
 	// reusing this credential
-	authenticate = {
+	authenticate: IAuthenticateGeneric = {
 		type: 'generic',
 		properties: {
 			headers: {
-				Authorization: '={{"Bearer " + $credentials.token}}',
+				Authorization: '={{"API-KEY " + $credentials.apiKey}}',
 			},
 		},
-	} as IAuthenticateGeneric;
+	};
 
 	// The block below tells how this credential can be tested
+	// Porsline (public) api does not have a generic endpoint to test
+	// authentication so we use get folders endpoint
 	test: ICredentialTestRequest = {
 		request: {
-			baseURL: '={{$credentials?.domain}}',
-			url: '/bearer',
+			baseURL: 'https://survey.porsline.ir/api/',
+			url: 'folders/',
 		},
 	};
 }

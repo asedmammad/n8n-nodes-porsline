@@ -1,0 +1,23 @@
+{
+	"node": "n8n-nodes.porslineTrigger",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": [
+		"Communication"
+	],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://developers.porsline.ir/#section/Authentication"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/asedmammad/porsline-n8n-node/blob/master/README.md"
+			}
+		]
+	},
+	"alias": [
+		"Survey"
+	]
+}
