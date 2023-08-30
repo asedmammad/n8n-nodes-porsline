@@ -38,7 +38,7 @@
     },
     "devDependencies": {
         "@types/express": "^4.17.6",
-        "@types/node": "^18.7.16",
+        "@types/node": "^20.5.7",
         "@types/request": "^2.48.8",
         "@typescript-eslint/parser": "^5.29.0",
         "eslint-plugin-n8n-nodes-base": "^1.5.4",
